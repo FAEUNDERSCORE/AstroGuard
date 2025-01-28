@@ -4,9 +4,74 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AstroGuard"
+        xmlns:viewModel="clr-namespace:AstroGuard.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+   
+        <Border Background="#191308"
+            CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="AstroGuard"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="22"
+                       FontFamily="/Fonts/#Poppins"/>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
+                <RadioButton Content="Import"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ImportViewCommand}"/>
+                <RadioButton Content="Settings"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding SettingsViewCommand}"/>
+            </StackPanel>
+
+            <TextBox Width="250"
+                     Height="40"
+                     VerticalContentAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="5"
+                     Grid.Column="1"
+                     Style="{StaticResource ModernTextBox}"/>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+
+        </Grid>
+    </Border>
 </Window>
