@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AstroGuard.MVVM.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AstroGuard
 {
@@ -23,6 +25,7 @@ namespace AstroGuard
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = App.Current.ServiceProvider.GetRequiredService<MainViewModel>();
         }
     }
 }

@@ -11,11 +11,6 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True">
-
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
-
    
         <Border Background="#191308"
             CornerRadius="10">

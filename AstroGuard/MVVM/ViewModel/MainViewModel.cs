@@ -9,13 +9,6 @@ namespace AstroGuard.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
-        public RelayCommand HomeViewCommand { get; set; }
-        public RelayCommand ImportViewCommand { get; set; }
-        public RelayCommand SettingsViewCommand { get; set; }
-        public HomeViewModel HomeVM { get; set; }
-        public ImportViewModel ImportVM { get; set; }
-        public SettingsViewModel SettingsVM { get; set; }
-
         private object _currentView;
 
         public object CurrentView
@@ -28,12 +21,21 @@ namespace AstroGuard.MVVM.ViewModel
             }
         }
 
-        public MainViewModel()
-        {
-            HomeVM = new HomeViewModel();
-            ImportVM = new ImportViewModel();
-            SettingsVM = new SettingsViewModel();
+        public RelayCommand HomeViewCommand { get; set; }
+        public RelayCommand ImportViewCommand { get; set; }
+        public RelayCommand SettingsViewCommand { get; set; }
+        
+        public HomeViewModel HomeVM { get; set; }
+        public ImportViewModel ImportVM { get; set; }
+        public SettingsViewModel SettingsVM { get; set; }
 
+
+        public MainViewModel(HomeViewModel homeVM, ImportViewModel importVM, SettingsViewModel settingsVM)
+        {
+            HomeVM = homeVM;
+            ImportVM = importVM;
+            SettingsVM = settingsVM;
+            
             CurrentView = HomeVM;
 
             HomeViewCommand = new RelayCommand(o =>
